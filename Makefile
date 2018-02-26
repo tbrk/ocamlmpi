@@ -33,11 +33,11 @@ opt: $(OBJS:.cmo=.cmx)
 .SUFFIXES: .ml .mli .cmo .cmi .cmx
 
 .ml.cmo:
-	$(OCAMLC) -c $<
+	$(OCAMLC) -unsafe-string -c $<
 .mli.cmi:
 	$(OCAMLC) -c $<
 .ml.cmx:
-	$(OCAMLOPT) -c $<
+	$(OCAMLOPT) -unsafe-string -c $<
 
 testmpi: test.ml mpi.cma libcamlmpi.a
 	ocamlc -g -o testmpi unix.cma mpi.cma test.ml -ccopt -L$(MPILIBDIR) -ccopt -L.
